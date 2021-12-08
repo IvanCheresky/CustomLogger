@@ -1,4 +1,5 @@
-﻿using LoggerExercise.Logger.Models;
+﻿using System.Collections.Generic;
+using LoggerExercise.Logger.Models;
 using LoggerExercise.Logger.Services.Interfaces;
 
 namespace LoggerExercise.Example
@@ -14,7 +15,17 @@ namespace LoggerExercise.Example
 
         public void UseLogger()
         {
+            // should print to console, file and db (if appsettings wasn't changed)
             _loggingService.Log(LogLevel.Message, "Testing message using configuration");
+
+            // should print to console, file and db (if appsettings wasn't changed)
+            _loggingService.Log(LogLevel.Error, "Testing error using configuration");
+
+            // shouldn't print anywhere (if appsettings wasn't changed)
+            _loggingService.Log(LogLevel.Warning, "Testing warning using configuration");
+
+            // should override configuration and print to console and db
+            _loggingService.ForceLog(LogLevel.Warning, new List<LogType>() {LogType.Console, LogType.Db}, "Testing warning overriding configuration");
         }
     }
 }

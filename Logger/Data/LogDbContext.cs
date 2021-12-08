@@ -16,7 +16,6 @@ namespace Logger.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.HasDefaultSchema("LoggerSchema");
         }
     }
 }
