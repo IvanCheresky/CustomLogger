@@ -1,6 +1,6 @@
-﻿namespace Logger.Models
+﻿namespace LoggerExercise.Logger.Models
 {
-    public enum LogTypes
+    public enum LogType
     {
         Console = 1,
         File = 2,

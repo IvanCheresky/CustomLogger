@@ -1,5 +1,5 @@
-﻿using Logger.Models;
-using Logger.Services.Interfaces;
+﻿using LoggerExercise.Logger.Models;
+using LoggerExercise.Logger.Services.Interfaces;
 
 namespace LoggerExercise.Example
 {
@@ -14,8 +14,7 @@ namespace LoggerExercise.Example
 
         public void UseLogger()
         {
-            // try logging to console
-            //_loggingService.Log(LogT)
+            _loggingService.Log(LogLevel.Message, "Testing message using configuration");
         }
     }
 }

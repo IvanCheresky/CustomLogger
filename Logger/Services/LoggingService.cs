@@ -1,37 +1,46 @@
-﻿using System;
+﻿using LoggerExercise.Logger.Configurations;
+using LoggerExercise.Logger.Models;
+using LoggerExercise.Logger.Services.Interfaces;
+using Microsoft.Extensions.Options;
 using System.Collections.Generic;
-using Logger.Configurations;
-using Logger.Models;
-using Logger.Services.Interfaces;
 
-namespace Logger.Services
+namespace LoggerExercise.Logger.Services
 {
     public class LoggingService : ILoggingService
     {
-        private readonly ILoggerConfiguration _configuration;
+        private readonly LoggerConfiguration _configuration;
+        private readonly IEnumerable<ILogger> _loggers;
 
-        public LoggingService(ILoggerConfiguration configuration)
+        public LoggingService(IOptions<LoggerConfiguration> configuration, IEnumerable<ILogger> loggers)
         {
-            _configuration = configuration;
+            _configuration = configuration.Value;
+            _loggers = loggers;
         }
 
-        public void Log(LogLevel logLevel, string Message)
+        public void Log(LogLevel logLevel, string message)
         {
-            if (!_configuration.LogLevels.Contains(logLevel))
+            if (_configuration.LogLevels.Contains(logLevel))
             {
-                return;
-            }
-
-            foreach (var type in _configuration.LogTypes)
-            {
-                Console.WriteLine(type.ToString());
+                foreach (var logger in _loggers)
+                {
+                    if (_configuration.LogTypes.Contains(logger.LogType))
+                    {
+                        logger.Log(logLevel, message);
+                    }
+                }
             }
         }
 
         // overrides configuration
-        public void ForceLog(LogLevel logLevel, List<LogTypes> logTypes, string Message)
+        public void ForceLog(LogLevel logLevel, List<LogType> logTypes, string message)
         {
-
+            foreach (var logger in _loggers)
+            {
+                if (logTypes.Contains(logger.LogType))
+                {
+                    logger.Log(logLevel, message);
+                }
+            }
         }
     }
 }

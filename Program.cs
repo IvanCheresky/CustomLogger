@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Logger;
-using Logger.Data.Interfaces;
-using Logger.Data.Repositories;
-using Logger.Models;
-using Logger.Services;
-using LoggerExercise.Data;
-using LoggerExercise.Data.Interfaces;
-using LoggerExercise.Data.Settings;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Logger.Services.Interfaces;
+﻿using LoggerExercise.Data.Settings;
 using LoggerExercise.Example;
+using LoggerExercise.Logger;
+using LoggerExercise.Logger.Configurations;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace LoggerExercise
@@ -48,17 +39,14 @@ namespace LoggerExercise
             ConnectionStrings connectionStrings = Configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>();
             services.AddSingleton<IConnectionStrings>(connectionStrings);
 
-            services.AddDbContext<IExerciseDbContext, ExerciseDbContext>(options => options.UseSqlServer(connectionStrings.ExerciseDbContext));
-
-            ServiceProvider serviceProvider = services.BuildServiceProvider();
-            var context = serviceProvider.GetService<ExerciseDbContext>();
+            var config = Configuration.GetSection("LoggerConfiguration").Get<LoggerConfiguration>();
 
             services.AddLogger(lc =>
                 {
-                    lc.LogLevels = new List<LogLevel>() {LogLevel.Error};
-                    lc.LogTypes = new List<LogTypes>() {LogTypes.Db};
+                    lc.LogLevels = config.LogLevels;
+                    lc.LogTypes = config.LogTypes;
                 },
-                context
+                connectionStrings.ConnectionString
             );
 
             services.AddScoped<ILogUseExample, LogUseExample>();

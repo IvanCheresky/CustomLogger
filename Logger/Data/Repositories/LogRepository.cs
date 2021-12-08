@@ -1,58 +1,57 @@
-﻿using System.Linq;
+﻿using LoggerExercise.Logger.Data.Interfaces;
+using LoggerExercise.Logger.Models;
+using System.Linq;
 using System.Threading.Tasks;
-using Logger.Data.Interfaces;
-using Logger.Models;
-using Microsoft.EntityFrameworkCore;
 
-namespace Logger.Data.Repositories
+namespace LoggerExercise.Logger.Data.Repositories
 {
     public class LogRepository : ILogRepository
     {
-        private readonly DbContext _dbContext;
+        private readonly ILogDbContext _logContext;
 
-        public LogRepository(DbContext dbContext)
+        public LogRepository(ILogDbContext logContext)
         {
-            _dbContext = dbContext;
+            _logContext = logContext;
         }
 
         public async Task<Log> Add(Log l)
         {
-            var log = await _dbContext.Set<Log>().AddAsync(l);
-            await _dbContext.SaveChangesAsync();
+            var log = await _logContext.Logs.AddAsync(l);
+            _logContext.SaveChanges();
             return log.Entity;
         }
 
         public async Task Delete(int id)
         {
-            var l = await _dbContext.Set<Log>().FindAsync(id);
-            _dbContext.Set<Log>().Remove(l);
-            await _dbContext.SaveChangesAsync();
+            var l = await _logContext.Logs.FindAsync(id);
+            _logContext.Logs.Remove(l);
+            _logContext.SaveChanges();
         }
 
         public async Task<Log> Get(int id)
         {
-            return await _dbContext.Set<Log>().FindAsync(id);
+            return await _logContext.Logs.FindAsync(id);
         }
 
         public IQueryable<Log> GetAll()
         {
-            return _dbContext.Set<Log>();
+            return _logContext.Logs;
         }
 
         public void SaveChanges()
         {
-            _dbContext.SaveChanges();
+            _logContext.SaveChanges();
         }
 
         public async Task<Log> Update(Log l)
         {
-            var log = await _dbContext.Set<Log>().FindAsync(l.Id);
+            var log = await _logContext.Logs.FindAsync(l.Id);
 
             log.LogType = l.LogType;
             log.Message = l.Message;
 
-            _dbContext.Set<Log>().Update(log);
-            await _dbContext.SaveChangesAsync();
+            _logContext.Logs.Update(log);
+            _logContext.SaveChanges();
 
             return log;
         }

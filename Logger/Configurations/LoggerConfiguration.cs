@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Logger.Models;
+﻿using LoggerExercise.Logger.Models;
+using System.Collections.Generic;
 
-namespace Logger.Configurations
+namespace LoggerExercise.Logger.Configurations
 {
     public class LoggerConfiguration
     {
         public List<LogLevel> LogLevels { get; set; }
-        public List<LogTypes> LogTypes { get; set; }
+        public List<LogType> LogTypes { get; set; }
     }
 }

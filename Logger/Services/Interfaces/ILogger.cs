@@ -1,9 +1,11 @@
-﻿using Logger.Models;
-using System.Collections.Generic;
+﻿using LoggerExercise.Logger.Models;
 
-namespace Logger.Services.Interfaces
+namespace LoggerExercise.Logger.Services.Interfaces
 {
     public interface ILogger
     {
+        LogType LogType { get; set; }
+
+        void Log(LogLevel level, string message);
     }
 }

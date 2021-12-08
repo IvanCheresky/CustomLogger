@@ -1,12 +1,16 @@
-﻿using Logger.Services.Interfaces;
+﻿using LoggerExercise.Logger.Models;
+using LoggerExercise.Logger.Services.Interfaces;
+using System;
 
-namespace Logger.Services
+namespace LoggerExercise.Logger.Services
 {
     public class ConsoleLogger : ILogger
     {
-        public ConsoleLogger()
-        {
+        public LogType LogType { get; set; } = LogType.Console;
 
+        public void Log(LogLevel level, string message)
+        {
+            Console.WriteLine($"{level}: {message}");
         }
     }
 }

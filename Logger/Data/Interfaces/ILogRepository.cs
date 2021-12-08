@@ -1,9 +1,9 @@
-﻿using Logger.Models;
+﻿using LoggerExercise.Logger.Models;
 
-namespace Logger.Data.Interfaces
+namespace LoggerExercise.Logger.Data.Interfaces
 {
     public interface ILogRepository : IRepository<Log>
     {
-        
+
     }
 }
