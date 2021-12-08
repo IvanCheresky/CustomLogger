@@ -1,4 +1,6 @@
-﻿namespace LoggerExercise.Data.Settings
+﻿using LoggerExercise.Settings.Interfaces;
+
+namespace LoggerExercise.Settings
 {
     public class ConnectionStrings : IConnectionStrings
     {

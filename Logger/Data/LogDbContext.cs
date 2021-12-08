@@ -1,5 +1,5 @@
-﻿using LoggerExercise.Logger.Data.Interfaces;
-using LoggerExercise.Logger.Models;
+﻿using Logger.Data.Interfaces;
+using Logger.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Logger.Data

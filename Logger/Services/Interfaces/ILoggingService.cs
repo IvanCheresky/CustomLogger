@@ -1,7 +1,7 @@
-﻿using LoggerExercise.Logger.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Logger.Models;
 
-namespace LoggerExercise.Logger.Services.Interfaces
+namespace Logger.Services.Interfaces
 {
     public interface ILoggingService
     {

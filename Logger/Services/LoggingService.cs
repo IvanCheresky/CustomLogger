@@ -1,10 +1,10 @@
-﻿using LoggerExercise.Logger.Configurations;
-using LoggerExercise.Logger.Models;
-using LoggerExercise.Logger.Services.Interfaces;
+﻿using System.Collections.Generic;
+using Logger.Configurations;
+using Logger.Models;
+using Logger.Services.Interfaces;
 using Microsoft.Extensions.Options;
-using System.Collections.Generic;
 
-namespace LoggerExercise.Logger.Services
+namespace Logger.Services
 {
     public class LoggingService : ILoggingService
     {

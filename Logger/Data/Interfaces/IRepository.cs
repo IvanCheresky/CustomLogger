@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 
-namespace LoggerExercise.Logger.Data.Interfaces
+namespace Logger.Data.Interfaces
 {
     public interface IRepository<T> where T : class
     {

@@ -41,6 +41,7 @@ namespace LoggerExercise
 
             var config = Configuration.GetSection("LoggerConfiguration").Get<LoggerConfiguration>();
 
+            // extension method for logger using a custom configuration
             services.AddLogger(lc =>
                 {
                     lc.LogLevels = config.LogLevels;

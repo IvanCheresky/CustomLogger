@@ -1,4 +1,4 @@
-﻿namespace LoggerExercise.Logger.Models
+﻿namespace Logger.Models
 {
     public enum LogType
     {

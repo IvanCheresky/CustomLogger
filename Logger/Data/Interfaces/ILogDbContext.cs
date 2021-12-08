@@ -7,10 +7,10 @@ using LoggerExercise.Logger.Models;
 using Microsoft.Logger.Models;
 */
 
-using LoggerExercise.Logger.Models;
+using Logger.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LoggerExercise.Logger.Data.Interfaces
+namespace Logger.Data.Interfaces
 {
     public interface ILogDbContext
     {

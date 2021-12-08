@@ -1,8 +1,8 @@
-﻿using LoggerExercise.Logger.Models;
-using LoggerExercise.Logger.Services.Interfaces;
-using System;
+﻿using System;
+using Logger.Models;
+using Logger.Services.Interfaces;
 
-namespace LoggerExercise.Logger.Services
+namespace Logger.Services
 {
     public class ConsoleLogger : ILogger
     {

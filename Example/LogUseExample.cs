@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using LoggerExercise.Logger.Models;
-using LoggerExercise.Logger.Services.Interfaces;
+using Logger.Models;
+using Logger.Services.Interfaces;
 
 namespace LoggerExercise.Example
 {
@@ -25,7 +25,7 @@ namespace LoggerExercise.Example
             _loggingService.Log(LogLevel.Warning, "Testing warning using configuration");
 
             // should override configuration and print to console and db
-            _loggingService.ForceLog(LogLevel.Warning, new List<LogType>() {LogType.Console, LogType.Db}, "Testing warning overriding configuration");
+            _loggingService.ForceLog(LogLevel.Warning, new List<LogType>() { LogType.Console, LogType.Db }, "Testing warning overriding configuration");
         }
     }
 }

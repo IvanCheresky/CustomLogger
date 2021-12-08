@@ -1,9 +1,9 @@
-﻿using LoggerExercise.Logger.Data.Interfaces;
-using LoggerExercise.Logger.Models;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using Logger.Data.Interfaces;
+using Logger.Models;
 
-namespace LoggerExercise.Logger.Data.Repositories
+namespace Logger.Data.Repositories
 {
     public class LogRepository : ILogRepository
     {

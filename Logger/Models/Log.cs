@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LoggerExercise.Logger.Models
+namespace Logger.Models
 {
     public class Log
     {

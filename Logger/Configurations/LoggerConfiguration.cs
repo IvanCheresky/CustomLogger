@@ -1,7 +1,7 @@
-﻿using LoggerExercise.Logger.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Logger.Models;
 
-namespace LoggerExercise.Logger.Configurations
+namespace Logger.Configurations
 {
     public class LoggerConfiguration
     {
