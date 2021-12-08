@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using Logger;
+using Logger.Data.Interfaces;
+using Logger.Data.Repositories;
+using Logger.Models;
 using Logger.Services;
 using LoggerExercise.Data;
 using LoggerExercise.Data.Interfaces;
@@ -7,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Logger.Services.Interfaces;
-using LoggerExercise.Data.Repositories;
 using LoggerExercise.Example;
 using Microsoft.Extensions.Hosting;
 
@@ -46,8 +50,17 @@ namespace LoggerExercise
 
             services.AddDbContext<IExerciseDbContext, ExerciseDbContext>(options => options.UseSqlServer(connectionStrings.ExerciseDbContext));
 
-            services.AddScoped<ILoggingService, LoggingService>();
-            services.AddScoped<ILogRepository, LogRepository>();
+            ServiceProvider serviceProvider = services.BuildServiceProvider();
+            var context = serviceProvider.GetService<ExerciseDbContext>();
+
+            services.AddLogger(lc =>
+                {
+                    lc.LogLevels = new List<LogLevel>() {LogLevel.Error};
+                    lc.LogTypes = new List<LogTypes>() {LogTypes.Db};
+                },
+                context
+            );
+
             services.AddScoped<ILogUseExample, LogUseExample>();
         }
     }
