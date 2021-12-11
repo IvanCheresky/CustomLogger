@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Logger.Models;
+﻿using Logger.Models;
 using Logger.Services.Interfaces;
+using System.Collections.Generic;
 
 namespace LoggerExercise.Example
 {

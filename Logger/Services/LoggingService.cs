@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Logger.Configurations;
+﻿using Logger.Configurations;
 using Logger.Models;
 using Logger.Services.Interfaces;
 using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 
 namespace Logger.Services
 {
@@ -19,8 +19,10 @@ namespace Logger.Services
 
         public void Log(LogLevel logLevel, string message)
         {
+            // check if logger configuration includes this log level
             if (_configuration.LogLevels.Contains(logLevel))
             {
+                // check which loggers are configured
                 foreach (var logger in _loggers)
                 {
                     if (_configuration.LogTypes.Contains(logger.LogType))

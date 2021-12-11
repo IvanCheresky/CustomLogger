@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Logger.Models;
+﻿using Logger.Models;
+using System.Collections.Generic;
 
 namespace Logger.Services.Interfaces
 {

@@ -1,15 +1,15 @@
-﻿using Logger.Data;
-using LoggerExercise.Logger.Configurations;
-using LoggerExercise.Logger.Data.Interfaces;
-using LoggerExercise.Logger.Data.Repositories;
-using LoggerExercise.Logger.Services;
-using LoggerExercise.Logger.Services.Interfaces;
+﻿using Logger.Configurations;
+using Logger.Data;
+using Logger.Data.Interfaces;
+using Logger.Data.Repositories;
+using Logger.Services;
+using Logger.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 
-namespace LoggerExercise.Logger
+namespace Logger
 {
     public static class LoggerServiceCollectionExtensions
     {

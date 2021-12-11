@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Logger.Data.Interfaces;
+﻿using Logger.Data.Interfaces;
 using Logger.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Logger.Data.Repositories
 {

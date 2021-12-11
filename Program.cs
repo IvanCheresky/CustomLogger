@@ -1,7 +1,8 @@
-﻿using LoggerExercise.Data.Settings;
+﻿using Logger;
+using Logger.Configurations;
 using LoggerExercise.Example;
-using LoggerExercise.Logger;
-using LoggerExercise.Logger.Configurations;
+using LoggerExercise.Settings;
+using LoggerExercise.Settings.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +24,7 @@ namespace LoggerExercise
             {
                 // run example code
                 var logUseExample = ActivatorUtilities.CreateInstance<LogUseExample>(host.Services);
+
                 logUseExample.UseLogger();
             }
         }

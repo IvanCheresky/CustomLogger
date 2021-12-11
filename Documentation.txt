@@ -1,5 +1,5 @@
 
-The project is divided in two part:
+The project is divided in two assemblies:
 
 1. The logger class library
 2. The console application with an example usage
@@ -8,9 +8,9 @@ The class library can be used by calling the AddLogger extension method on IServ
 which log levels will be logged and where they will be logged. After this setup, the ILoggingService can be injected into classes. The method Log will
 print messages according to the configuration. There is an additional method - ForceLog - for logging a message which overrides the configuration.
 
-The logger configuration must be set in appsettings.
+The logger configuration and the connection string must be set in appsettings. Note that the files will be created in the bin folder.
 
-To print to the db, the ConnectionString in appsetting must point to a db with a Logs table. The following script was used for the table (alternatively, 
+To print to the db, the connection string must point to a db with a Logs table. The following script was used for the table (alternatively, 
 migrations could be run):
 
 CREATE TABLE [dbo].[Logs](

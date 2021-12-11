@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using Logger.Models;
+﻿using Logger.Models;
 using Logger.Services.Interfaces;
+using System;
+using System.IO;
 
 namespace Logger.Services
 {
